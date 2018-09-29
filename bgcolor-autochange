@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Background Color Auto Change</title>
+</head>
+<body onload="setInterval(testA,1000)" style="transition: background-color 3s; background:#012933;">
+<script type="text/javascript">
+	function testA() {
+		if (document.body.style.backgroundColor == "orange") {
+			document.body.style.backgroundColor = "green";
+		}
+
+		else if (document.body.style.backgroundColor == "green") {
+			document.body.style.backgroundColor = "blue";
+		}
+
+		else if (document.body.style.backgroundColor == "blue") {
+			document.body.style.backgroundColor = "pink";
+		}
+		else if (document.body.style.backgroundColor == "pink") {
+			document.body.style.backgroundColor = "red";
+		}
+		else if (document.body.style.backgroundColor == "blue") {
+			document.body.style.backgroundColor = "dark";
+		}
+		else {
+			document.body.style.backgroundColor = "orange";
+		}
+	}
+</script>
+</body>
+</html>
