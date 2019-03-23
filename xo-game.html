@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+<style type="text/css">
+	.temel {
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: #000;
+		margin: auto;
+		overflow: hidden !important;
+	}
+	.ortala {
+		 align-items: center !important;
+		 justify-content:center !important;
+		 display:flex !important;
+	}
+	.alan {
+		width: 750px ;
+		height: 750px;
+		margin: auto;
+		background: #000;
+	}
+	.kare {
+		width: 250px;
+		height: 250px;
+		border: 1px solid #fff;
+		font-size: 160px;
+		text-align: center;
+		color: #000;
+	}
+	button {
+		background: none;
+		outline: none;
+	}
+	.a1, .a2 {
+		float: left;
+	}
+	.oyunbitti {
+		width: 100vw;
+		height: 100vh;
+		background: #fff;
+		position: absolute;
+		margin-top: -100vh;
+		top: 0;
+		left: 0;
+		transition: margin-top 2s;
+		font-size: 250px;
+		font-family: Arial;
+	}
+	.oyna {
+		width: 100vw;
+		height: 100vh;
+		background: #000;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 99 !important;
+		transition: margin-top 2s;
+	}
+	.oynabuton {
+		padding: 15px;
+		background: #fff;
+		color: #000;
+		text-align: center;
+		font-size: 150px;
+		cursor: pointer;
+		transition: opacity 3s;
+	}
+	.oynabuton1 {
+		left: 0;
+		position: absolute;
+		background: none !important;
+		width: 100vw;
+		z-index: 99 !important;
+		margin-top: -100vh;
+		border: none;
+		transition: margin-top 2s;
+	}
+	.oynabuton1 span {
+		padding: 20px;
+		background: #fff;
+		font-size: 75px !important;
+		text-align: center !important;
+	}
+</style>
+	<div class="temel ortala">
+		<div class="oyna ortala" id="oyna">
+			<button class="oynabuton" onclick="baslat()">START</button>
+		</div>
+		<div id="alan">
+			<button class="a1 kare ortala" id="a1" onclick="calistir(this.id)">1</button>
+			<button class="a2 kare ortala" id="a2" onclick="calistir(this.id)">2</button>
+			<button class="a3 kare ortala" id="a3" onclick="calistir(this.id)">3</button>
+			<button class="a1 kare ortala" id="b1" onclick="calistir(this.id)">4</button>
+			<button class="a2 kare ortala" id="b2" onclick="calistir(this.id)">5</button>
+			<button class="a3 kare ortala" id="b3" onclick="calistir(this.id)">6</button>
+			<button class="a1 kare ortala" id="c1" onclick="calistir(this.id)">7</button>
+			<button class="a2 kare ortala" id="c2" onclick="calistir(this.id)">8</button>
+			<button class="a3 kare ortala" id="c3" onclick="calistir(this.id)">9</button>
+		</div>
+	</div>
+	<div class="oyunbitti ortala" id="oyunbitti">
+	</div>
+			<button class="oynabuton oynabuton1" id="tekraroyna" onclick="baslat()"><span>PLAY AGAIN</span></button>
+	<script type="text/javascript">
+		function baslat() {
+			document.getElementById("oyna").style.marginTop = "-100vh";
+			document.getElementById("oyunbitti").style.marginTop = "-100vh";
+			document.getElementById("tekraroyna").style.marginTop = "-100vh";
+
+				document.getElementById("a1").innerHTML = "1";
+				document.getElementById("a2").innerHTML = "2";
+				document.getElementById("a3").innerHTML = "3";
+				document.getElementById("b1").innerHTML = "4";
+				document.getElementById("b2").innerHTML = "5";
+				document.getElementById("b3").innerHTML = "6";
+				document.getElementById("c1").innerHTML = "7";
+				document.getElementById("c2").innerHTML = "8";
+				document.getElementById("c3").innerHTML = "9";
+				document.getElementById("a1").style.color = "black";
+				document.getElementById("a2").style.color = "black";
+				document.getElementById("a3").style.color = "black";
+				document.getElementById("b1").style.color = "black";
+				document.getElementById("b2").style.color = "black";
+				document.getElementById("b3").style.color = "black";
+				document.getElementById("c1").style.color = "black";
+				document.getElementById("c2").style.color = "black";
+				document.getElementById("c3").style.color = "black";
+		}
+		kazanma = 0;
+		karakter1 = "X";
+		karakter1_renk = "blue";
+		karakter2 = "O";
+		karakter2_renk = "red";
+		sira = karakter1;
+		function calistir(clicked_id) {
+			if (document.getElementById(clicked_id).innerHTML != karakter1 && document.getElementById(clicked_id).innerHTML != karakter2) {
+				document.getElementById(clicked_id).innerHTML = sira;
+				if (sira == karakter1) { document.getElementById(clicked_id).style.color = "blue"; sira = karakter2;} else {document.getElementById(clicked_id).style.color = "red"; sira = karakter1;}
+			}
+			setTimeout(kazanan, 0);
+		}
+		function kazanan() {
+			//YATAY EKSEN KONTROL
+			if (((document.getElementById("a1").innerHTML == document.getElementById("a2").innerHTML && document.getElementById("a2").innerHTML == document.getElementById("a3").innerHTML) || (document.getElementById("b1").innerHTML == document.getElementById("b2").innerHTML && document.getElementById("b2").innerHTML == document.getElementById("b3").innerHTML) || (document.getElementById("c1").innerHTML == document.getElementById("c2").innerHTML && document.getElementById("c2").innerHTML == document.getElementById("c3").innerHTML))) {kazanma = 1;}
+			//DİKEY EKSEN KONTROL
+			if (((document.getElementById("a1").innerHTML == document.getElementById("b1").innerHTML && document.getElementById("b1").innerHTML == document.getElementById("c1").innerHTML) || (document.getElementById("a2").innerHTML == document.getElementById("b2").innerHTML && document.getElementById("b2").innerHTML == document.getElementById("c2").innerHTML) || (document.getElementById("a3").innerHTML == document.getElementById("b3").innerHTML && document.getElementById("b3").innerHTML == document.getElementById("c3").innerHTML))) {kazanma = 1;}
+			//ÇAPRAZ KONTROL
+			if (((document.getElementById("a1").innerHTML == document.getElementById("b2").innerHTML && document.getElementById("b2").innerHTML == document.getElementById("c3").innerHTML) || (document.getElementById("a3").innerHTML == document.getElementById("b2").innerHTML && document.getElementById("b2").innerHTML == document.getElementById("c1").innerHTML))) {kazanma = 1;}
+			if (kazanma == 1) {
+				if (sira == karakter1) {sira = karakter2; bg_renk = karakter2_renk; kazanan_taraf = karakter2;} else {sira = karakter1; bg_renk = karakter1_renk; kazanan_taraf = karakter1;}
+				document.getElementById("oyunbitti").style.background = bg_renk;
+				document.getElementById("oyunbitti").style.marginTop = "0vh";
+				document.getElementById("oyunbitti").innerHTML = kazanan_taraf + " WIN!";
+				document.getElementById("tekraroyna").style.marginTop = "70vh";
+
+				document.getElementById("a1").innerHTML = "1";
+				document.getElementById("a2").innerHTML = "2";
+				document.getElementById("a3").innerHTML = "3";
+				document.getElementById("b1").innerHTML = "4";
+				document.getElementById("b2").innerHTML = "5";
+				document.getElementById("b3").innerHTML = "6";
+				document.getElementById("c1").innerHTML = "7";
+				document.getElementById("c2").innerHTML = "8";
+				document.getElementById("c3").innerHTML = "9";
+				document.getElementById("a1").style.color = "black";
+				document.getElementById("a2").style.color = "black";
+				document.getElementById("a3").style.color = "black";
+				document.getElementById("b1").style.color = "black";
+				document.getElementById("b2").style.color = "black";
+				document.getElementById("b3").style.color = "black";
+				document.getElementById("c1").style.color = "black";
+				document.getElementById("c2").style.color = "black";
+				document.getElementById("c3").style.color = "black";
+				//document.getElementsByClassName("kare").style.color = "#000";
+				kazanma = 0;
+			}
+			else {
+				if ((document.getElementById("a1").innerHTML == karakter1 || document.getElementById("a1").innerHTML == karakter2) && (document.getElementById("a2").innerHTML == karakter1 || document.getElementById("a2").innerHTML == karakter2) && (document.getElementById("a3").innerHTML == karakter1 || document.getElementById("a3").innerHTML == karakter2) && (document.getElementById("b1").innerHTML == karakter1 || document.getElementById("b1").innerHTML == karakter2) && (document.getElementById("b2").innerHTML == karakter1 || document.getElementById("b2").innerHTML == karakter2) && (document.getElementById("b3").innerHTML == karakter1 || document.getElementById("b3").innerHTML == karakter2) && (document.getElementById("c1").innerHTML == karakter1 || document.getElementById("c1").innerHTML == karakter2) && (document.getElementById("c2").innerHTML == karakter1 || document.getElementById("c2").innerHTML == karakter2) && (document.getElementById("c3").innerHTML == karakter1 || document.getElementById("c3").innerHTML == karakter2)) {
+					document.getElementById("oyunbitti").style.background = "orange";
+					document.getElementById("oyunbitti").style.marginTop = "0vh";
+					document.getElementById("oyunbitti").innerHTML = "DRAW!";
+					document.getElementById("tekraroyna").style.marginTop = "70vh";
+				}
+			}
+		}
+	</script>
+</body>
+</html>
