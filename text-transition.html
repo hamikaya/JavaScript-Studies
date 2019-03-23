@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<style type="text/css">
+	.temel {
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		position: absolute;
+		overflow: hidden;
+	}
+	.ortala {
+		 align-items: center !important;
+		 justify-content:center !important;
+		 display:flex !important;
+	}
+	.kare1 {
+		width:150px;
+		height: 150px;
+		border-top: 3px solid #000;
+		border-left: 3px solid #000;
+		transform: rotate(-45deg);
+	}
+	.kare2 {
+		width:150px;
+		height: 150px;
+		border-top: 3px solid #000;
+		border-left: 3px solid #000;
+		transform: rotate(135deg);
+	}
+	.kare11 {
+		width:50vw;
+		height: 200px;
+		border-right: 3px solid #000;
+		position: absolute;
+		left: 0;
+		transition: margin 2s !important;
+		background: #fff;
+		z-index: 99 !important;
+	}
+	.kare22 {
+		width:50vw;
+		height: 200px;
+		border-left: 3px solid #000;
+		position: absolute;
+		right: 0;
+		transition: margin 2s !important;
+		background: #fff;
+		z-index: 99 !important;
+	}
+	#test {
+		font-family: 'Montserrat', sans-serif;
+		transition: opacity 2s;
+		position: absolute;
+		margin: 0px;
+		font-size: 50px;
+		text-transform: uppercase;
+	}
+</style>
+<body onload="acil()">
+	<div class="temel ortala">
+		<div class="kare11" id="kare1"></div>
+		<p id="test"></p>
+		<div class="kare22" id="kare2"></div>
+	</div>
+	<script type="text/javascript">
+		setInterval(acil, 3000);
+		var metin = ["bu bİr denemedİr.", '<i class="fab fa-instagram"></i> hamİkaya06'];
+		var sayi = 0;
+		function acil() {
+			if (sayi == 2) {sayi = 0;}
+			if (document.getElementById("kare1").style.marginLeft == "0vw") {
+				document.getElementById("kare1").style.marginLeft = "-25vw";
+				document.getElementById("test").innerHTML = metin[sayi];
+				document.getElementById("test").style.opacity = 1;
+				sayi++;
+			}
+			else {
+				document.getElementById("kare1").style.marginLeft = "0vw";
+				document.getElementById("test").style.opacity = 0;
+			}
+			if (document.getElementById("kare2").style.marginRight == "0vw") {
+				document.getElementById("kare2").style.marginRight = "-25vw";
+			}
+			else {
+				document.getElementById("kare2").style.marginRight = "0vw";
+			}
+		}
+	</script>
+</body>
+</html>
